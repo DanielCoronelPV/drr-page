@@ -1,0 +1,26 @@
+﻿@inherits LayoutComponentBase
+
+<Header />
+
+<div>
+    <main role="main">
+        @Body
+    </main>
+</div>
+
+@* <footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2025 - DRR_PAGE - <a href="/privacy">Privacy</a>
+    </div>
+</footer> *@
+
+<Shared />
+
+<!-- Scripts -->
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/site.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>

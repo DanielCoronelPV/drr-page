@@ -1,0 +1,33 @@
+﻿<nav id="mainNav" data-aos="fade-down" data-aos-duration="1000" class="navbar">
+    <div class="navbar-container">
+        <!-- Botón hamburguesa (visible solo en móviles) -->
+        <button id="hamburgerBtn" class="btn-hamburger" onclick="toggleMobileMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+        </button>
+
+        <!-- Logo -->
+        <div class="logo-container" onclick="scrollToSection('inicio')">
+            <img id="logo" src="/assets/img/drr-logo.png" alt="Logo" />
+        </div>
+
+        <!-- Menú de navegación -->
+        <div id="navMenu" class="nav-menu">
+            <ul>
+                <li><button id="btnInicio" onclick="scrollToSection('inicio')" class="nav-button">Inicio</button></li>
+                <li><button onclick="scrollToSection('eleginos')" class="nav-button">Eleginos</button></li>
+                <li><button class="nav-button">Nosotros</button></li>
+                <li><button class="nav-button">Servicios</button></li>
+                <li><button class="nav-button">Contactanos</button></li>
+            </ul>
+        </div>
+
+        <!-- Button cotizar ahora -->
+        <button class="btn-agendar" type="button">Agendar</button>
+    </div>
+</nav>
+
+@code {
+
+}
