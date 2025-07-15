@@ -99,8 +99,13 @@ body {
     /*    overflow: hidden;*/
 }
 
+.bg-body {
+    background: linear-gradient(to top right, #ffffff, #ebf4ff, #e0e7ff) !important;
+}
+
 .bg-hero {
-    background: linear-gradient(to top right, #e2f1e8 40%, #a6b0fb 100%);
+    /*    background: linear-gradient(to top right, #e2f1e8 40%, #a6b0fb 100%);*/
+/*    background: linear-gradient(to right, #f8fafc, #ebf4ff, #e0e7ff);*/
     justify-content: center;
     display: flex;
     padding-left: 10%;
