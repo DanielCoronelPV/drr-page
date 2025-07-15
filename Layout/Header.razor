@@ -1,4 +1,10 @@
-﻿<nav id="mainNav" data-aos="fade-down" data-aos-duration="1000" class="navbar">
+﻿@using DRR_PAGE_BLAZOR.Services
+@using System.Text.Json
+
+@inject EmpresaService EmpresaService
+@inject IJSRuntime JS
+
+<nav id="mainNav" data-aos="fade-down" data-aos-duration="1000" class="navbar">
     <div class="navbar-container">
         <!-- Botón hamburguesa (visible solo en móviles) -->
         <button id="hamburgerBtn" class="btn-hamburger" onclick="toggleMobileMenu()">
@@ -9,7 +15,10 @@
 
         <!-- Logo -->
         <div class="logo-container" onclick="scrollToSection('inicio')">
-            <img id="logo" src="./assets/img/drr-logo.png" alt="Logo" />
+            @if (empresa != null && !string.IsNullOrEmpty(empresa.Logo))
+            {
+                <img id="logo" src="data:image/png;base64,@empresa.Logo" alt="Logo" />
+            }
         </div>
 
         <!-- Menú de navegación -->
@@ -29,5 +38,29 @@
 </nav>
 
 @code {
+    private DRR_PAGE_BLAZOR.Models.Empresa? empresa;
 
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            empresa = await EmpresaService.ObtenerEmpresaAsync();
+
+            if (empresa == null)
+            {
+                await JS.InvokeVoidAsync("console.log", "Datos no encontrado.");
+            }
+            // else
+            // {
+                // await JS.InvokeVoidAsync("console.log", "Mostrando datos de BD - Sector de Empresa:", JsonSerializer.Serialize(empresa, new JsonSerializerOptions
+                // {
+                //     WriteIndented = true
+                // }));
+            // }
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("console.error", "Error al obtener datos:", ex.Message);
+        }
+    }
 }

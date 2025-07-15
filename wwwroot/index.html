@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="css/home.css" asp-append-version="true" />
     <link rel="stylesheet" href="css/shared.css" asp-append-version="true" />
+    <link rel="stylesheet" href="css/whychooseus.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <!-- If you add any scoped CSS files, uncomment the following to load them
@@ -32,25 +33,14 @@
         <a class="dismiss">🗙</a>
     </div>
 
-
-
-
-
     <script src="js/counter.js"></script>
-    <script src="js/fab.js"></script>
-
     <script>
-
-        window.addEventListener('scroll', function () {
-            const nav = document.getElementById('mainNav');
-            const logo = document.getElementById('logo');
-            if (window.scrollY > 10) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+        document.addEventListener("DOMContentLoaded", function () {
+            window.startCounters(); // Llama a la función definida en counter.js
         });
     </script>
+
+    <script src="js/fab.js"></script>
 
     <script>
         function scrollToSection(id) {
@@ -73,21 +63,21 @@
                 btnInicio.focus();
                 btnInicio.click();
             }
+            window.startCounters();
         });
     </script>
-
-
-
 
     <!-- Script para scroll y menú hamburguesa -->
     <script>
         window.addEventListener('scroll', function () {
             const nav = document.getElementById('mainNav');
             const logo = document.getElementById('logo');
-            if (window.scrollY > 10) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
+            if (nav) {
+                if (window.scrollY > 10) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
             }
         });
 
@@ -96,8 +86,6 @@
             menu.classList.toggle('show');
         }
     </script>
-
-
 
     <script>
         window.toggleMobileMenu = function () {

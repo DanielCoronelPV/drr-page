@@ -1,85 +1,137 @@
-﻿<div id="fabContainer" class="fab-container">
-    <!-- Botón principal -->
-    <button id="mainFab" type="button" class="fab main-fab pulsing">
-        <i class="fas fa-comments"></i>
-    </button>
+﻿@using DRR_PAGE_BLAZOR.Services
+@using System.Text.Json
 
-    <!-- Burbuja principal -->
-    <div id="mainBubble" class="fab-bubble main-bubble">Contactanos</div>
+@inject EmpresaService EmpresaService
 
-    <!-- Opciones secundarias -->
-    <div class="fab-options">
-        <a href="https://www.youtube.com/channel/UCUCsBcpFKja9bBMaLW7J3cg" class="fab fab-youtube" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-youtube"></i>
-            <div class="fab-bubble hover-bubble">Youtube</div>
-        </a>
-        <a href="https://www.instagram.com/drrsystemas/?hl=es" class="fab fab-instagram" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-instagram"></i>
-            <div class="fab-bubble hover-bubble">Instagram</div>
-        </a>
-        <a href="https://www.facebook.com/DRR.Systemas/" class="fab fab-facebook" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-facebook"></i>
-            <div class="fab-bubble hover-bubble">Facebook</div>
-        </a>
-        <!-- WhatsApp con subopciones -->
-        <div class="fab fab-whatsapp-wrapper">
-            <i class="fab fa-whatsapp"></i>
+<div id="fabContainer" class="fab-container">  
+    <!-- Botón principal -->  
+    <button id="mainFab" type="button" class="fab main-fab pulsing">  
+        <i class="fas fa-comments"></i>  
+    </button>  
 
-            <div class="whatsapp-sub-options">
-                <a href="https://wa.me/5493751420850" target="_blank" rel="noopener noreferrer" class="fab fab-sub fab-wsp1">
-                    <i class="fab fa-whatsapp"></i>
-                    <div class="fab-bubble hover-bubble">El dorado</div>
-                </a>
-                <a href="https://wa.me/5493764487101" target="_blank" rel="noopener noreferrer" class="fab fab-sub fab-wsp2">
-                    <i class="fab fa-whatsapp"></i>
-                    <div class="fab-bubble hover-bubble">El Posadas</div>
-                </a>
-            </div>
-        </div>
-        <a href="mailto:drrsystemas@hotmail.com" class="fab fab-email" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-envelope"></i>
-            <div class="fab-bubble hover-bubble">E-mail</div>
-        </a>
-        <!-- Llamar con subopciones -->
-        <div class="fab fab-phone-wrapper">
-            <i class="fas fa-phone"></i>
-            <div class="phone-sub-options">
-                <a href="tel:+5493751420850" class="fab fab-sub fab-call1">
-                    <i class="fas fa-phone"></i>
-                    <div class="fab-bubble hover-bubble">El dorado</div>
-                </a>
-                <a href="tel:+5493764487101" class="fab fab-sub fab-call2">
-                    <i class="fas fa-phone"></i>
-                    <div class="fab-bubble hover-bubble">Posadas</div>
-                </a>
-            </div>
+    <!-- Burbuja principal -->  
+    <div id="mainBubble" class="fab-bubble main-bubble">Contactanos</div>  
+
+    <!-- Opciones secundarias -->  
+    <div class="fab-options">  
+        <a href="https://www.youtube.com/channel/UCUCsBcpFKja9bBMaLW7J3cg" class="fab fab-youtube" target="_blank" rel="noopener noreferrer">  
+            <i class="fab fa-youtube"></i>  
+            <div class="fab-bubble hover-bubble">Youtube</div>  
+        </a>  
+        <a href="https://www.instagram.com/drrsystemas/?hl=es" class="fab fab-instagram" target="_blank" rel="noopener noreferrer">  
+            <i class="fab fa-instagram"></i>  
+            <div class="fab-bubble hover-bubble">Instagram</div>  
+        </a>  
+        <a href="https://www.facebook.com/DRR.Systemas/" class="fab fab-facebook" target="_blank" rel="noopener noreferrer">  
+            <i class="fab fa-facebook"></i>  
+            <div class="fab-bubble hover-bubble">Facebook</div>  
+        </a>  
+        <!-- WhatsApp con subopciones -->  
+        <div class="fab fab-whatsapp-wrapper">  
+            <i class="fab fa-whatsapp"></i>  
+
+            <div class="whatsapp-sub-options">  
+                <a href="@($"https://wa.me/{numeroWhatsApp}")" target="_blank" rel="noopener noreferrer" class="fab fab-sub fab-wsp1">
+                    <i class="fab fa-whatsapp"></i>  
+                    <div class="fab-bubble hover-bubble">El dorado</div>  
+                </a>  
+                <a href="https://wa.me/5493764487101" target="_blank" rel="noopener noreferrer" class="fab fab-sub fab-wsp2">  
+                    <i class="fab fa-whatsapp"></i>  
+                    <div class="fab-bubble hover-bubble">El Posadas</div>  
+                </a>  
+            </div>  
         </div>
 
-        <!-- Ubicación con subopciones -->
-        <div class="fab fab-location-wrapper">
-            <i class="fas fa-location-dot"></i>
-            <div class="location-sub-options">
-                <a href="https://maps.app.goo.gl/YdGohc6JushErwdp8" class="fab fab-sub fab-loc1" target="_blank">
-                    <i class="fas fa-location-dot"></i>
-                    <div class="fab-bubble hover-bubble">El dorado</div>
-                </a>
-                <a href="https://maps.app.goo.gl/V5c53r6myV9gLRW26" class="fab fab-sub fab-loc2" target="_blank">
-                    <i class="fas fa-location-dot"></i>
-                    <div class="fab-bubble hover-bubble">Posadas</div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+        @if (empresa != null && !string.IsNullOrEmpty(empresa.E_Mail))
+        {
+            <a href="mailto:@empresa.E_Mail" class="fab fab-email" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-envelope"></i>
+                <div class="fab-bubble hover-bubble">E-mail</div>
+            </a>
+        }
+
+        <!-- Llamar con subopciones -->  
+        <div class="fab fab-phone-wrapper">  
+            <i class="fas fa-phone"></i>  
+            <div class="phone-sub-options">  
+                <a href="@($"tel:+{numeroWhatsApp}")" class="fab fab-sub fab-call1">
+                    <i class="fas fa-phone"></i>  
+                    <div class="fab-bubble hover-bubble">El dorado</div>  
+                </a>  
+                <a href="tel:+5493764487101" class="fab fab-sub fab-call2">  
+                    <i class="fas fa-phone"></i>  
+                    <div class="fab-bubble hover-bubble">Posadas</div>  
+                </a>  
+            </div>  
+        </div>  
+
+        <!-- Ubicación con subopciones -->  
+        <div class="fab fab-location-wrapper">  
+            <i class="fas fa-location-dot"></i>  
+            <div class="location-sub-options">  
+                <a href="https://maps.app.goo.gl/YdGohc6JushErwdp8" class="fab fab-sub fab-loc1" target="_blank">  
+                    <i class="fas fa-location-dot"></i>  
+                    <div class="fab-bubble hover-bubble">El dorado</div>  
+                </a>  
+                <a href="https://maps.app.goo.gl/V5c53r6myV9gLRW26" class="fab fab-sub fab-loc2" target="_blank">  
+                    <i class="fas fa-location-dot"></i>  
+                    <div class="fab-bubble hover-bubble">Posadas</div>  
+                </a>  
+            </div>  
+        </div>  
+    </div>  
+</div>  
 
 @code {
-    [Inject] IJSRuntime JS { get; set; }
+    private DRR_PAGE_BLAZOR.Models.Empresa? empresa;
+    [Inject] IJSRuntime JS { get; set; }  
+    private string numeroWhatsApp = "";
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)  
+    {  
+        if (firstRender)  
+        {  
+            await JS.InvokeVoidAsync("setupFab");  
+        }  
+    }
+
+    protected override async Task OnInitializedAsync()
     {
-        if (firstRender)
+        try
         {
-            await JS.InvokeVoidAsync("setupFab");
+            empresa = await EmpresaService.ObtenerEmpresaAsync();
+
+            if (empresa == null)
+            {
+                await JS.InvokeVoidAsync("console.log", "Datos no encontrados.");
+            }
+            else
+            {
+                // await JS.InvokeVoidAsync("console.log", "Empresa cargada:", JsonSerializer.Serialize(empresa, new JsonSerializerOptions
+                // {
+                //     WriteIndented = true
+                // }));
+
+                // Formatear teléfono
+                var telefono = empresa?.telefono ?? "";
+
+                // Eliminar guiones y espacios
+                telefono = telefono.Replace("-", "").Replace(" ", "");
+
+                // Eliminar primer 0
+                if (telefono.StartsWith("0"))
+                    telefono = telefono.Substring(1);
+
+                // Prefijo país Argentina: 549
+                numeroWhatsApp = $"549{telefono}";
+
+                // await JS.InvokeVoidAsync("console.log", $"WhatsApp formateado: {numeroWhatsApp}");
+            }
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("console.error", "Error al obtener datos:", ex.Message);
         }
     }
+
 }

@@ -1,0 +1,85 @@
+﻿@inject IJSRuntime JS
+
+@page "/why-choose-us"
+
+<section id="eleginos" class="why-choose-us">
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h2>¿Por qué elegirnos?</h2>
+            <div class="divider"></div>
+            <p>
+                Somos líderes en el mercado de sistemas empresariales, ofreciendo soluciones
+                innovadoras que transforman la manera en que las empresas operan y crecen.
+            </p>
+        </div>
+
+        <!-- Features -->
+        <div class="features-grid">
+            @foreach (var feature in Features)
+            {
+                <div class="feature-card">
+                    <div class="icon-wrapper">
+                        <i class="@feature.Icon"></i>
+                    </div>
+                    <h3>@feature.Title</h3>
+                    <p>@feature.Description</p>
+                    <div class="decor-line"></div>
+                </div>
+            }
+        </div>
+
+        <!-- CTA -->
+        <div class="cta">
+            <div class="cta-box">
+                <h3>¿Listo para transformar tu empresa?</h3>
+                <p>
+                    Únete a más de 1000+ empresas que ya confían en nuestras soluciones tecnológicas
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn-primary">Solicitar Consulta Gratuita</button>
+                    <button class="btn-outline">Ver Nuestros Casos de Éxito</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            @foreach (var stat in Stats)
+            {
+                @* <div class="stat">
+                    <div class="stat-number">@stat.Number</div>
+                    <div class="stat-label">@stat.Label</div>
+                </div> *@
+                <div class="stat">
+                    <div class="stat-number">
+                        <span class="sp counter" data-target="@stat.TargetNumber">0</span>@stat.Suffix
+                    </div>
+                    <div class="stat-label">@stat.Label</div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@code {
+    private List<Feature> Features = new()
+    {
+        new Feature("fa-solid fa-shield-halved", "Seguridad Garantizada", "Implementamos los más altos estándares de seguridad para proteger tus datos y sistemas críticos con tecnología de punta."),
+        new Feature("fa-solid fa-bolt", "Alto Rendimiento", "Nuestros sistemas están optimizados para ofrecer el máximo rendimiento y eficiencia en todas las operaciones empresariales."),
+        new Feature("fa-solid fa-users", "Equipo Experto", "Contamos con profesionales certificados con más de 10 años de experiencia en implementación de sistemas empresariales."),
+        new Feature("fa-solid fa-award", "Calidad Certificada", "Todos nuestros productos y servicios cumplen con certificaciones internacionales ISO y estándares de calidad mundial."),
+        new Feature("fa-solid fa-clock", "Soporte 24/7", "Ofrecemos soporte técnico especializado las 24 horas del día, los 7 días de la semana para garantizar la continuidad de tu negocio."),
+        new Feature("fa-solid fa-headphones", "Atención Personalizada", "Cada cliente recibe un plan personalizado adaptado a sus necesidades específicas y objetivos empresariales únicos.")
+    };
+
+    private List<Stat> Stats = new()
+    {
+        new Stat(1000, "+", "Empresas Atendidas"),
+        new Stat(24, "/7", "Soporte Técnico"),
+        new Stat(30, "+", "Años de Experiencia")
+    };
+
+    private record Feature(string Icon, string Title, string Description);
+    private record Stat(int TargetNumber, string Suffix, string Label);
+}
