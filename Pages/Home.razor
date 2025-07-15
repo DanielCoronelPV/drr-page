@@ -1,107 +1,88 @@
-﻿@page "/"
+﻿@using DRR_PAGE_BLAZOR.Services
+@using DRR_PAGE_BLAZOR.Models
+@using System.Text.Json
+
+@inject EmpresaService EmpresaService
+
+@page "/"
 @inject IJSRuntime JS
 
-<section class="bg-hero" id="inicio">
-    <div class="hero-section">
-        <div class="bound"></div>
-        <div class="main_spinner">
-            <div class="center_mass"></div>
-            <div class="dot dot_1"></div>
-            <div class="dot dot_2"></div>
-        </div>
+<div class="bg-body">
+    <section class="bg-hero" id="inicio">
+        <div class="hero-section">
+            <div class="bound"></div>
+            <div class="main_spinner">
+                <div class="center_mass"></div>
+                <div class="dot dot_1"></div>
+                <div class="dot dot_2"></div>
+            </div>
 
-        <div class="hero-content">
-            <h1 class="title" data-aos="fade-up" data-aos-duration="1000" tabindex="-1">
-                Somos una empresa dedicada a brindar <strong>sistemas de gestión</strong>
-            </h1>
+            <div class="hero-content">
+                <h1 class="title" data-aos="fade-up" data-aos-duration="1000" tabindex="-1">
+                    Somos una empresa dedicada a brindar <strong>sistemas de gestión</strong>
+                </h1>
 
-            <h4 class="subtitle" data-aos="fade-up" data-aos-duration="1300">
-                Ayudamos a todo tipo de empresas a favorecer el desarrollo interno de su negocio.
-            </h4>
+                <h4 class="subtitle" data-aos="fade-up" data-aos-duration="1300">
+                    Ayudamos a todo tipo de empresas a favorecer el desarrollo interno de su negocio.
+                </h4>
 
-            <button onclick="scrollToSection('eleginos')" class="btn-eleginos" type="button" data-aos="fade-up" data-aos-duration="1300">Por que elegirnos</button>
+                <button onclick="scrollToSection('eleginos')" class="btn-eleginos" type="button" data-aos="fade-up" data-aos-duration="1300">Eleginos</button>
 
-            <div class="dates-container" data-aos="fade-up" data-aos-duration="1300">
-                <div class="text-container">
-                    <h3>
-                        <strong class="counter" data-target="150">0</strong><strong class="comp">+</strong>
-                    </h3>
-                    <span>Proyectos Completados</span>
-                </div>
+                <div class="dates-container" data-aos="fade-up" data-aos-duration="1300">
+                    <div class="text-container">
+                        <h3>
+                            <strong class="counter" data-target="150">0</strong><strong class="comp">+</strong>
+                        </h3>
+                        <span>Proyectos Completados</span>
+                    </div>
 
-                <div class="text-container">
-                    <h3>
-                        <strong class="counter" data-target="100">0</strong><strong class="comp">%</strong>
-                    </h3>
-                    <span>Clientes Recurrentes</span>
-                </div>
+                    <div class="text-container">
+                        <h3>
+                            <strong class="counter" data-target="100">0</strong><strong class="comp">%</strong>
+                        </h3>
+                        <span>Clientes Recurrentes</span>
+                    </div>
 
-                <div class="text-container">
-                    <h3>
-                        <strong class="counter" data-target="26">0</strong><strong class="comp">+</strong>
-                    </h3>
-                    <span>Años de Experiencia</span>
+                    <div class="text-container">
+                        <h3>
+                            <strong class="counter" data-target="30">0</strong><strong class="comp">+</strong>
+                        </h3>
+                        <span>Años de Experiencia</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="img-container" data-aos="fade-right" data-aos-duration="1000">
-            <img id="AlmaNet" src="./assets/img/Mokup-AlmaNet.png" alt="AlmaNet" />
-        </div>
-    </div>
-</section>
-
-
-<section class="bg-hero" id="eleginos">
-    <div class="hero-section">
-        <div class="bound"></div>
-        <div class="main_spinner">
-            <div class="center_mass"></div>
-            <div class="dot dot_1"></div>
-            <div class="dot dot_2"></div>
-        </div>
-
-        <div class="hero-content">
-            <h1 class="title" data-aos="fade-up" data-aos-duration="1000">
-                Somos una empresa dedicada a brindar <strong>sistemas de gestión</strong>
-            </h1>
-
-            <h4 class="subtitle" data-aos="fade-up" data-aos-duration="1300">
-                Ayudamos a todo tipo de empresas a favorecer el desarrollo interno de su negocio.
-            </h4>
-
-            <button onclick="scrollToSection('eleginos')" class="btn-eleginos" type="button" data-aos="fade-up" data-aos-duration="1300">Por que elegirnos</button>
-
-            <div class="dates-container" data-aos="fade-up" data-aos-duration="1300">
-                <div class="text-container">
-                    <h3>
-                        <strong class="counter" data-target="150">0 +</strong>
-                    </h3>
-                    <span>Proyectos Completados</span>
-                </div>
-
-                <div class="text-container">
-                    <h3>
-                        <strong class="counter" data-target="100">0 %</strong>
-                    </h3>
-                    <span>Clientes Recurrentes</span>
-                </div>
-
-                <div class="text-container">
-                    <h3>
-                        <strong class="counter" data-target="26">0 +</strong>
-                    </h3>
-                    <span>Años de Experiencia</span>
-                </div>
+            <div class="img-container" data-aos="fade-right" data-aos-duration="1000">
+                <img id="AlmaNet" src="./assets/img/Mokup-AlmaNet.png" alt="AlmaNet" />
             </div>
         </div>
+    </section>
 
-        <div class="img-container" data-aos="fade-right" data-aos-duration="1000">
-            <img id="AlmaNet" src="/assets/img/Mokup-AlmaNet.png" alt="AlmaNet" />
-        </div>
-    </div>
-</section>
+    <section id="eleginos">
+        <WhyChooseUs />
+    </section>
+</div>
 
+@* <section>
+    <h3>Empresa</h3>
+
+    @if (empresa is null)
+    {
+        <p>Cargando datos...</p>
+    }
+    else
+    {
+        <p><strong>Razón social:</strong> @empresa.RazonSocial</p>
+        <p><strong>Email:</strong> @empresa.E_Mail</p>
+        <p><strong>Telefono:</strong> @empresa.telefono</p>
+
+        @if (!string.IsNullOrWhiteSpace(empresa.Logo))
+        {
+            <p><strong>Logo:</strong></p>
+            <img src="data:image/png;base64,@empresa.Logo" alt="Logo de la empresa" style="max-width: 300px;" />
+        }
+    }
+</section> *@
 
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -109,6 +90,32 @@
         if (firstRender)
         {
             await JS.InvokeVoidAsync("startCounters");
+        }
+    }
+ 
+    private DRR_PAGE_BLAZOR.Models.Empresa? empresa;  
+
+    protected override async Task OnInitializedAsync()  
+    {  
+        try
+        {
+            empresa = await EmpresaService.ObtenerEmpresaAsync();
+
+            if (empresa == null)
+            {
+                await JS.InvokeVoidAsync("console.log", "Datos no encontrado.");
+            }
+            // else
+            // {
+                // await JS.InvokeVoidAsync("console.log", "Mostrando datos de BD - Sector de Empresa:", JsonSerializer.Serialize(empresa, new JsonSerializerOptions
+                // {
+                //     WriteIndented = true
+                // }));
+            // }
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("console.error", "Error al obtener datos:", ex.Message);
         }
     }
 }
