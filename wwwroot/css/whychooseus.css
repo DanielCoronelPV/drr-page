@@ -191,10 +191,10 @@
 }
 
     .btn-outline:hover {
-        background: linear-gradient(to bottom right, #3b82f6, #393185);
+        transform: translateY(-2px);
+        background: #e0e7ff;
         transition: all 0.3s ease-in-out !important;
-        color: white;
-        border-color: white;
+        color: #2563eb;
     }
 
 /* Stats */
