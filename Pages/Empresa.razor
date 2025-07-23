@@ -6,22 +6,23 @@
 @page "/empresa"  
 @inject EmpresaService EmpresaService  
 
-<h3>Empresa</h3>  
+<h3 style="margin-top:300px">Empresa</h3>
 
 @if (empresa is null)  
 {  
     <p>Cargando datos...</p>  
 }  
 else  
-{  
+{
     <p><strong>Razón social:</strong> @empresa.RazonSocial</p>
+    @* <p><strong>Ruc:</strong> @empresa.Ruc</p> *@
     <p><strong>Email:</strong> @empresa.E_Mail</p>
     <p><strong>Telefono:</strong> @empresa.telefono</p>
 
     @if (!string.IsNullOrWhiteSpace(empresa.Logo))
     {
         <p><strong>Logo:</strong></p>
-        <img src="data:image/png;base64,@empresa.Logo" alt="Logo de la empresa" style="max-width: 300px;" />
+        <img src="data:image/png;base64,@empresa.Logo" alt="Logo de la empresa" style="max-width:300px"/>
     }
 }  
 

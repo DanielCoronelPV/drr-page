@@ -80,6 +80,28 @@
                             <option value="otro">Otro</option>
                         </InputSelect>
                     </div>
+                    <div class="form-group dropdown-multi">
+                        <i class="fas fa-cubes icon-input"></i>
+                        <div class="dropdown">
+                            <button class="input dropdown-toggle" @onclick="ToggleDropdown">
+                                @(formData.Modules.Count == 0 ? "Selecciona módulos" : $"Seleccionados: {string.Join(", ", formData.Modules)}")
+                            </button>
+                            @if (isDropdownOpen)
+                            {
+                                <div class="dropdown-menu show">
+                                    @foreach (var modulo in ModulosDisponibles)
+                                    {
+                                        <label class="dropdown-item">
+                                            <input type="checkbox"
+                                                   checked="@formData.Modules.Contains(modulo)"
+                                                   @onchange="() => ToggleModulo(modulo)" />
+                                            @modulo
+                                        </label>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
                     <div class="form-group">
                         <i class="fas fa-comment icon-input"></i>
                         <InputTextArea class="input textarea" @bind-Value="formData.Message" placeholder="Tu mensaje..." Rows="5" required />
@@ -125,6 +147,7 @@
         public string Email { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
         public string Reason { get; set; } = string.Empty;
+        public List<string> Modules { get; set; } = new();
         public string Message { get; set; } = string.Empty;
     }
 
@@ -178,5 +201,25 @@
         {
             await JS.InvokeVoidAsync("console.error", "Error al obtener datos:", ex.Message);
         }
+    }
+
+    private bool isDropdownOpen = false;
+
+    private List<string> ModulosDisponibles = new()
+{
+    "Ventas", "Compras", "Contabilidad", "Stock"
+};
+
+    private void ToggleDropdown()
+    {
+        isDropdownOpen = !isDropdownOpen;
+    }
+
+    private void ToggleModulo(string modulo)
+    {
+        if (formData.Modules.Contains(modulo))
+            formData.Modules.Remove(modulo);
+        else
+            formData.Modules.Add(modulo);
     }
 }

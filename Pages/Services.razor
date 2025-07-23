@@ -1,0 +1,105 @@
+﻿@page "/servicios"
+
+<section class="services-section">
+    <div class="services-container">
+        <div class="services-header">
+            <h2>Nuestros servicios</h2>
+            <div class="divider"></div>
+            <p>
+                Ofrecemos soluciones tecnológicas integrales diseñadas para impulsar el crecimiento
+                y la eficiencia de tu empresa.
+            </p>
+        </div>
+
+        <!-- Servicios principales -->
+        <div class="main-services">
+            @foreach (var service in MainServices)
+            {
+                <div class="service-card">
+                    <div class="service-card-header">
+                        <div class="icon-wrapper">
+                            <i class="@service.IconClass"></i>
+                        </div>
+                        <h3>@service.Title</h3>
+                    </div>
+                    <p class="service-description">@service.Description</p>
+                    <ul class="service-features">
+                        @foreach (var feature in service.Features)
+                        {
+                            <li><span class="dot"></span>@feature</li>
+                        }
+                    </ul>
+                    <button onclick="scrollToSection('contactanos')" class="service-btn">Solicitar Cotización</button>
+                </div>
+            }
+        </div>
+
+        <!-- Servicios adicionales -->
+        <div class="additional-services-header">
+            <h3>Complementarios</h3>
+            <p>Servicios adicionales para completar tu transformación digital</p>
+        </div>
+
+        <div class="additional-services">
+            @foreach (var service in AdditionalServices)
+            {
+                <div class="service-card small">
+                    @* <div class="icon-wrapper small">
+                        <i class="@service.IconClass"></i>
+                    </div> *@
+                    <h4>@service.Title</h4>
+                    <p>@service.Description</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@code {
+    public class Service
+    {
+        public string IconClass { get; set; } = string.Empty;
+        public string Title { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
+        public List<string> Features { get; set; } = new();
+    }
+
+    private List<Service> MainServices = new()
+    {
+        new Service {
+            IconClass = "fas fa-database",
+            Title = "Sistemas de Gestión Empresarial",
+            Description = "Desarrollo de ERP, CRM y sistemas personalizados para optimizar todos los procesos de tu empresa.",
+            Features = new List<string> {
+                "ERP completo y personalizado",
+                "CRM para gestión de clientes",
+                "Facturación electrónica",
+                "Sistemas de inventario",
+                "Gestión de recursos humanos",
+                "Contabilidad integrada"
+            }
+        },
+        new Service {
+            IconClass = "fas fa-globe",
+            Title = "Desarrollo Web",
+            Description = "Creación de sitios web modernos, aplicaciones web y tiendas en línea con las últimas tecnologías.",
+            Features = new List<string> {
+                "Sitios web responsivos",
+                "Aplicaciones web progresivas",
+                "E-commerce completo",
+                "Portales corporativos",
+                "APIs y servicios web"
+            }
+        }
+    };
+
+    private List<Service> AdditionalServices = new()
+    {
+        new Service { IconClass = "fas fa-cogs", Title = "Automatización de Procesos", Description = "Optimizamos y automatizamos procesos empresariales para mayor eficiencia." },
+        new Service { IconClass = "fas fa-chart-bar", Title = "Business Intelligence", Description = "Dashboards y reportes inteligentes para la toma de decisiones estratégicas." },
+        new Service { IconClass = "fas fa-lightbulb", Title = "Facturación Electrónica", Description = "Implementamos soluciones de facturación electrónica adaptadas a tus necesidades y normativas locales." },
+        new Service { IconClass = "fas fa-mobile-alt", Title = "Aplicaciones Móviles", Description = "Desarrollo de apps móviles nativas y híbridas para iOS y Android." },
+        new Service { IconClass = "fas fa-cloud", Title = "Migración a la Nube", Description = "Trasladamos tus sistemas a la nube para mayor escalabilidad y flexibilidad." },
+        new Service { IconClass = "fas fa-plug", Title = "Integración de Sistemas", Description = "Conectamos distintas plataformas y herramientas para lograr una gestión centralizada y más eficiente." }
+    };
+}

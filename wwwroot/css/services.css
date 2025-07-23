@@ -1,0 +1,188 @@
+﻿.services-section {
+    padding: 4rem 0;
+}
+
+.services-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.services-header,
+.additional-services-header {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+    .services-header h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #1f2937;
+        margin-bottom: 1.5rem;
+    }
+
+    .services-header .divider {
+        width: 96px;
+        height: 4px;
+        margin: 0 auto 1.5rem;
+        background: #f9e905;
+        border-radius: 2px;
+    }
+
+    .services-header p {
+        font-family: 'Montserrat', sans-serif;
+        max-width: 768px;
+        margin: 0 auto;
+        font-size: 1.25rem;
+        color: #4b5563;
+        line-height: 1.75rem;
+    }
+
+    .additional-services-header h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: #1f2937;
+        margin-bottom: 1.5rem;
+    }
+
+    .additional-services-header p {
+        font-family: 'Montserrat', sans-serif;
+        max-width: 768px;
+        margin: 0 auto;
+        font-size: 1.25rem;
+        color: #4b5563;
+        line-height: 1.75rem;
+    }
+
+.main-services,
+.additional-services {
+    display: grid;
+    gap: 32px;
+}
+
+.main-services {
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+    .main-services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .additional-services {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.service-card {
+    /*    background: linear-gradient(to bottom right, #1a1a1a, #111);*/
+    padding: 24px;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+    .service-card:hover {
+        box-shadow: 0 0 100px rgba(59, 130, 246, 0.3);
+    }
+
+.service-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+    .service-card-header h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #1f2937;
+        margin-bottom: 1rem;
+        transition: color 0.3s;
+        margin-left: 16px;
+        margin-top: 0;
+    }
+
+.icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom right, #3b82f6, #393185);
+}
+
+    .icon-wrapper i {
+        color: #fff;
+        font-size: 24px;
+    }
+
+.service-description {
+    font-family: 'Montserrat', sans-serif;
+    color: #4b5563;
+    line-height: 1.5rem;
+    margin-bottom: 16px;
+}
+
+.service-features {
+    font-family: 'Montserrat', sans-serif;
+    color: #4b5563 !important;
+    line-height: 1.5rem;
+    list-style: none;
+    padding-left: 0;
+}
+
+    .service-features li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    .service-features .dot {
+        position: relative !important;
+        width: 8px;
+        height: 8px;
+        background-color: #3b82f6;
+        border-radius: 50%;
+        margin-right: 8px !important;
+    }
+
+.service-btn {
+    border: 2px solid #2563eb;
+    color: #2563eb;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out !important;
+    width: 100%;
+    margin-top: 24px;
+    padding: 12px;
+}
+
+    .service-btn:hover {
+        transform: translateY(-2px);
+        background: #e0e7ff;
+        transition: all 0.3s ease-in-out !important;
+        color: #2563eb;
+    }
+
+.service-card.small {
+    font-family: 'Montserrat', sans-serif;
+    padding: 32px 16px;
+    color: #4b5563;
+    line-height: 1.5rem;
+}
+
+    .service-card.small h4 {
+        text-align: center;
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+        font-weight: bold;
+        color: #1f2937;
+    }

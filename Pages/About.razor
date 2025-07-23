@@ -1,0 +1,62 @@
+﻿<section class="about-section">
+    <div class="container">
+        <div class="text-center about-header">
+            <h2>
+                Conocenos
+            </h2>
+            <div class="divider"></div>
+            <p>
+                Somos una empresa especializada en el desarrollo de sistemas de gestión empresarial y soluciones web,
+                comprometida con la transformación digital de las organizaciones.
+            </p>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Transformando empresas desde 1993</h3>
+                <p>
+                    Con más de una década de experiencia en el mercado, hemos ayudado a cientos de empresas
+                    a optimizar sus procesos mediante el desarrollo de sistemas personalizados y soluciones web robustas.
+                </p>
+                <p>
+                    Nuestro enfoque se centra en entender las necesidades específicas de cada cliente para
+                    desarrollar soluciones que realmente generen valor y mejoren la productividad empresarial.
+                </p>
+            </div>
+
+            <div class="about-cards">
+                @foreach (var item in Values)
+                {
+                    <div class="about-card">
+                        <div>
+                            <div class="icon-title-container">
+                                <div class="icon-wrapper">
+                                    <i class="@item.Icon"></i>
+                                </div>
+                                <h4>@item.Title</h4>
+                            </div>
+                            <p>@item.Description</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    class AboutItem
+    {
+        public string Icon { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+    }
+
+    List<AboutItem> Values = new()
+    {
+        new AboutItem { Icon = "fas fa-bullseye", Title = "Misión", Description = "Proporcionar soluciones tecnológicas innovadoras que impulsen el crecimiento y la eficiencia empresarial de nuestros clientes." },
+        new AboutItem { Icon = "fas fa-users", Title = "Equipo", Description = "Contamos con un equipo altamente capacitado de desarrolladores y consultores con más de 10 años de experiencia." },
+        new AboutItem { Icon = "fas fa-award", Title = "Calidad", Description = "Nos comprometemos con la excelencia en cada proyecto, utilizando las mejores prácticas y tecnologías más actuales." },
+        new AboutItem { Icon = "fas fa-lightbulb", Title = "Innovación", Description = "Mantenemos una constante actualización tecnológica para ofrecer soluciones vanguardistas y eficientes." }
+    };
+}

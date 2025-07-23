@@ -13,6 +13,7 @@
             from_email: formData.Email,
             phone: formData.Phone,
             reason: formData.Reason,
+            modules: formData.Modules?.join(', ') || '',
             message: formData.Message
         });
 
@@ -22,4 +23,12 @@
         console.error("❌ Error al enviar correo:", error);
         alert("❌ Ocurrió un error al enviar el correo.");
     }
+};
+
+window.getSelectedModules = (dotNetHelper) => {
+    const select = document.querySelector('select[multiple]');
+    if (!select) return;
+
+    const selected = Array.from(select.selectedOptions).map(opt => opt.value);
+    dotNetHelper.invokeMethodAsync("SetSelectedModules", selected);
 };

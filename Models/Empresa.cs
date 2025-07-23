@@ -4,6 +4,7 @@ public class Empresa
 {
     public int EmpresaID { get; set; }  // ← coincide con "empresaID"
     public string RazonSocial { get; set; } = string.Empty;
+    //public string Ruc { get; set; } = string.Empty;
     public string telefono { get; set; } = string.Empty;
 
     public string E_Mail { get; set; } = string.Empty;

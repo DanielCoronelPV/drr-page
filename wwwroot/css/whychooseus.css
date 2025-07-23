@@ -61,7 +61,8 @@
 
     .feature-card:hover {
         transform: translateY(-0.5rem);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        box-shadow: 0 0 50px hsl(217, 91%, 60%, 0.3);
+        /*        box-shadow: 0 8px 24px rgba(0,0,0,0.12);*/
     }
 
 .icon-wrapper {

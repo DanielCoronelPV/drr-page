@@ -142,8 +142,7 @@ body {
     height: 100%;
     align-items: center !important;
     justify-content: space-between;
-    align-items: center !important;
-    padding: 0.7rem 2rem;
+    padding: 0.6rem 2rem;
 }
 
 .logo-container img {
@@ -196,6 +195,8 @@ body {
     list-style: none;
     display: flex;
     gap: 1rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .nav-button {

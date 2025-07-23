@@ -1,6 +1,6 @@
 ﻿.fab-container {
     position: fixed;
-    bottom: 1rem;
+    bottom: 2rem;
     left: 1rem;
     z-index: 9999;
     border: none;
@@ -62,12 +62,14 @@
         text-decoration: none;
         border: none;
         outline: none;
+        display: none !important;
     }
 
 .fab-container.open .fab-options .fab {
     opacity: 1 !important;
     transform: translateY(0) !important;
     pointer-events: auto !important;
+    display: flex !important; /* opcional, si querés asegurarte del layout */
 }
 
 .fab-bubble {
