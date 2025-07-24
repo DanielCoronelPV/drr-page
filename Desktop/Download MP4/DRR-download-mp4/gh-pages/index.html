@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Descarga automática de videos</title>
+
+    <base href="/" />
+    <link rel="stylesheet" href="css/app.css" />
+
+    <script>
+        window.onload = function () {
+            const links = [
+                'videos/video1.mp4',
+                'videos/video2.mp4'
+            ];
+
+            links.forEach((videoUrl, index) => {
+                const a = document.createElement('a');
+                a.href = videoUrl;
+                a.download = `video${index + 1}.mp4`; // nombre con el que se descargará
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+        };
+    </script>
+
+    <!-- If you add any scoped CSS files, uncomment the following to load them
+    <link href="BlazorApp1.styles.css" rel="stylesheet" /> -->
+</head>
+
+<body>
+    <h1>Descargando videos de publicidad...</h1>
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>
