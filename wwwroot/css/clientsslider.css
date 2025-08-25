@@ -56,16 +56,15 @@
     overflow: hidden;
     border-radius: 0.75rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 200px;
+    height: 300px;
 }
 
 .img-wrapper {
     position: relative;
     width: 100%;
-    height: 100%;
     padding-top: 75%;
     object-position: center;
-    object-fit: cover;
+    object-fit: cover !important;
     overflow: hidden;
 }
 
