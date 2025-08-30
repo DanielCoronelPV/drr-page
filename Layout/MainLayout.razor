@@ -1,6 +1,13 @@
 ﻿@inherits LayoutComponentBase
 
-<Header />
+@inject EmpresaService EmpresaService
+@inject HttpClient Http
+@inject IJSRuntime JS
+
+@using DRR_PAGE_BLAZOR.Models
+@using DRR_PAGE_BLAZOR.Services
+
+<Header EmpresaData="@_empresa" />
 
 <div>
     <main role="main">
@@ -8,4 +15,26 @@
     </main>
 </div>
 
-<Shared />
+<Footer EmpresaData="@_empresa" />
+
+<Shared EmpresaData="@_empresa" />
+
+@code {
+    private Empresa? _empresa;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _empresa = await EmpresaService.ObtenerEmpresaAsync();
+            if (_empresa == null)
+            {
+                await JS.InvokeVoidAsync("console.log", "Datos de la empresa no encontrados.");
+            }
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("console.error", "Error al cargar los datos de la empresa:", ex.Message);
+        }
+    }
+}

@@ -1,9 +1,10 @@
 ﻿@using DRR_PAGE_BLAZOR.Services
+@using DRR_PAGE_BLAZOR.Models
 @using System.Text.Json
 
-@inject EmpresaService EmpresaService
+@inject IJSRuntime JS
 
-<div id="fabContainer" class="fab-container">  
+<div id="fabContainer" class="fab-container" data-aos="fade-left" data-aos-duration="1000">
     <!-- Botón principal -->  
     <button id="mainFab" type="button" class="fab main-fab pulsing">  
         <i class="fas fa-comments"></i>  
@@ -42,9 +43,9 @@
             </div>  
         </div>
 
-        @if (empresa != null && !string.IsNullOrEmpty(empresa.E_Mail))
+        @if (EmpresaData != null && !string.IsNullOrEmpty(EmpresaData.E_Mail))
         {
-            <a href="mailto:@empresa.E_Mail" class="fab fab-email" target="_blank" rel="noopener noreferrer">
+            <a href="mailto:@EmpresaData.E_Mail" class="fab fab-email" target="_blank" rel="noopener noreferrer">
                 <i class="fas fa-envelope"></i>
                 <div class="fab-bubble hover-bubble">E-mail</div>
             </a>
@@ -83,8 +84,8 @@
 </div>  
 
 @code {
-    private DRR_PAGE_BLAZOR.Models.Empresa? empresa;
-    [Inject] IJSRuntime JS { get; set; }  
+    [Parameter]
+    public Empresa? EmpresaData { get; set; }
     private string numeroWhatsApp = "";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)  
@@ -95,43 +96,22 @@
         }  
     }
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnParametersSet()
     {
-        try
+        // Este método se llama cada vez que se establece un parámetro (como EmpresaData)
+        if (EmpresaData != null)
         {
-            empresa = await EmpresaService.ObtenerEmpresaAsync();
-
-            if (empresa == null)
-            {
-                await JS.InvokeVoidAsync("console.log", "Datos no encontrados.");
-            }
-            else
-            {
-                // await JS.InvokeVoidAsync("console.log", "Empresa cargada:", JsonSerializer.Serialize(empresa, new JsonSerializerOptions
-                // {
-                //     WriteIndented = true
-                // }));
-
-                // Formatear teléfono
-                var telefono = empresa?.telefono ?? "";
-
-                // Eliminar guiones y espacios
-                telefono = telefono.Replace("-", "").Replace(" ", "");
-
-                // Eliminar primer 0
-                if (telefono.StartsWith("0"))
-                    telefono = telefono.Substring(1);
-
-                // Prefijo país Argentina: 549
-                numeroWhatsApp = $"549{telefono}";
-
-                // await JS.InvokeVoidAsync("console.log", $"WhatsApp formateado: {numeroWhatsApp}");
-            }
-        }
-        catch (Exception ex)
-        {
-            await JS.InvokeVoidAsync("console.error", "Error al obtener datos:", ex.Message);
+            var telefono = EmpresaData.telefono ?? "";
+            telefono = telefono.Replace("-", "").Replace(" ", "");
+            if (telefono.StartsWith("0"))
+                telefono = telefono.Substring(1);
+            numeroWhatsApp = $"549{telefono}";
         }
     }
 
+    [Inject] public IJSRuntime JSRuntime { get; set; } = default!;
+    private async Task ScrollToSection(string sectionId)
+    {
+        await JSRuntime.InvokeVoidAsync("scrollToSection", sectionId);
+    }
 }

@@ -17,7 +17,7 @@ public class Sucursal
 {
     public string? Domicilio { get; set; }
     public int CiudadId { get; set; }
-    public string Ciudad { get; set; }
+    //public string Ciudad { get; set; }
     public string? Provincia { get; set; }
     public string? Pais { get; set; }
     // Agrega más propiedades si existen

@@ -1,7 +1,7 @@
 ﻿@using DRR_PAGE_BLAZOR.Services
+@using DRR_PAGE_BLAZOR.Models
 @using System.Text.Json
 
-@inject EmpresaService EmpresaService
 @inject IJSRuntime JS
 
 <nav id="mainNav" data-aos="fade-down" data-aos-duration="1000" class="navbar">
@@ -15,9 +15,9 @@
 
         <!-- Logo -->
         <div class="logo-container" onclick="scrollToSection('inicio')">
-            @if (empresa != null && !string.IsNullOrEmpty(empresa.Logo))
+            @if (EmpresaData != null && !string.IsNullOrEmpty(EmpresaData.Logo))
             {
-                <img id="logo" src="data:image/png;base64,@empresa.Logo" alt="Logo" />
+                <img id="logo" src="data:image/png;base64,@EmpresaData.Logo" alt="Logo" />
             }
         </div>
 
@@ -38,29 +38,6 @@
 </nav>
 
 @code {
-    private DRR_PAGE_BLAZOR.Models.Empresa? empresa;
-
-    protected override async Task OnInitializedAsync()
-    {
-        try
-        {
-            empresa = await EmpresaService.ObtenerEmpresaAsync();
-
-            if (empresa == null)
-            {
-                await JS.InvokeVoidAsync("console.log", "Datos no encontrado.");
-            }
-            // else
-            // {
-                // await JS.InvokeVoidAsync("console.log", "Mostrando datos de BD - Sector de Empresa:", JsonSerializer.Serialize(empresa, new JsonSerializerOptions
-                // {
-                //     WriteIndented = true
-                // }));
-            // }
-        }
-        catch (Exception ex)
-        {
-            await JS.InvokeVoidAsync("console.error", "Error al obtener datos:", ex.Message);
-        }
-    }
+    [Parameter]
+    public Empresa? EmpresaData { get; set; }
 }
