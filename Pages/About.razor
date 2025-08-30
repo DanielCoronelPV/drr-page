@@ -4,7 +4,7 @@
             <h2>
                 Conocenos
             </h2>
-            <div class="divider"></div>
+            <div class="divider" data-aos="fade-up" data-aos-duration="1000"></div>
             <p>
                 Somos una empresa especializada en el desarrollo de sistemas de gestión empresarial y soluciones web,
                 comprometida con la transformación digital de las organizaciones.
@@ -27,7 +27,7 @@
             <div class="about-cards">
                 @foreach (var item in Values)
                 {
-                    <div class="about-card">
+                    <div class="about-card" data-aos="@item.AosAnimation" data-aos-delay="@item.AosDelay">
                         <div>
                             <div class="icon-title-container">
                                 <div class="icon-wrapper">
@@ -50,13 +50,15 @@
         public string Icon { get; set; } = "";
         public string Title { get; set; } = "";
         public string Description { get; set; } = "";
+        public string AosAnimation { get; set; } = string.Empty;
+        public int AosDelay { get; set; } = 0;
     }
 
     List<AboutItem> Values = new()
     {
-        new AboutItem { Icon = "fas fa-bullseye", Title = "Misión", Description = "Proporcionar soluciones tecnológicas innovadoras que impulsen el crecimiento y la eficiencia empresarial de nuestros clientes." },
-        new AboutItem { Icon = "fas fa-users", Title = "Equipo", Description = "Contamos con un equipo altamente capacitado de desarrolladores y consultores con más de 10 años de experiencia." },
-        new AboutItem { Icon = "fas fa-award", Title = "Calidad", Description = "Nos comprometemos con la excelencia en cada proyecto, utilizando las mejores prácticas y tecnologías más actuales." },
-        new AboutItem { Icon = "fas fa-lightbulb", Title = "Innovación", Description = "Mantenemos una constante actualización tecnológica para ofrecer soluciones vanguardistas y eficientes." }
+        new AboutItem { Icon = "fas fa-bullseye", Title = "Misión", Description = "Proporcionar soluciones tecnológicas innovadoras que impulsen el crecimiento y la eficiencia empresarial de nuestros clientes.", AosAnimation = "fade-left", AosDelay = 100 },
+        new AboutItem { Icon = "fas fa-users", Title = "Equipo", Description = "Contamos con un equipo altamente capacitado de desarrolladores y consultores con más de 10 años de experiencia.", AosAnimation = "fade-left", AosDelay = 200 },
+        new AboutItem { Icon = "fas fa-award", Title = "Calidad", Description = "Nos comprometemos con la excelencia en cada proyecto, utilizando las mejores prácticas y tecnologías más actuales.", AosAnimation = "fade-left", AosDelay = 100 },
+        new AboutItem { Icon = "fas fa-lightbulb", Title = "Innovación", Description = "Mantenemos una constante actualización tecnológica para ofrecer soluciones vanguardistas y eficientes.", AosAnimation = "fade-left", AosDelay = 200 }
     };
 }

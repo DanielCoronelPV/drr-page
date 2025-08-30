@@ -7,7 +7,7 @@
         <!-- Header -->
         <div class="header">
             <h2>¿Por qué elegirnos?</h2>
-            <div class="divider"></div>
+            <div class="divider" data-aos="fade-up" data-aos-duration="1000"></div>
             <p>
                 Somos líderes en el mercado de sistemas empresariales, ofreciendo soluciones
                 innovadoras que transforman la manera en que las empresas operan y crecen.
@@ -18,7 +18,7 @@
         <div class="features-grid">
             @foreach (var feature in Features)
             {
-                <div class="feature-card">
+                <div class="feature-card" data-aos="@feature.AosAnimation" data-aos-delay="@feature.AosDelay">
                     <div class="icon-wrapper">
                         <i class="@feature.Icon"></i>
                     </div>
@@ -37,8 +37,8 @@
                     Únete a más de 1000+ empresas que ya confían en nuestras soluciones tecnológicas
                 </p>
                 <div class="cta-buttons">
-                    <button onclick="scrollToSection('contactanos')" class="btn-primary">Solicitar Consulta Gratuita</button>
-                    <button onclick="scrollToSection('clientes')" class="btn-outline">Ver Nuestros Casos de Éxito</button>
+                    <button onclick="scrollToSection('contactanos')" class="btn-primary" data-aos="fade-up" data-aos-duration="100">Solicitar Consulta Gratuita</button>
+                    <button onclick="scrollToSection('clientes')" class="btn-outline" data-aos="fade-up" data-aos-duration="200">Ver Nuestros Casos de Éxito</button>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
                     <div class="stat-number">@stat.Number</div>
                     <div class="stat-label">@stat.Label</div>
                 </div> *@
-                <div class="stat">
+                <div class="stat" data-aos="@stat.AosAnimation" data-aos-delay="@stat.AosDelay">
                     <div class="stat-number">
                         <span class="sp counter" data-target="@stat.TargetNumber">0</span>@stat.Suffix
                     </div>
@@ -63,23 +63,25 @@
 </section>
 
 @code {
+    private record Feature(string Icon, string Title, string Description, string AosAnimation, int AosDelay = 0);
+    private record Stat(int TargetNumber, string Suffix, string Label, string AosAnimation, int AosDelay = 0);
+
     private List<Feature> Features = new()
     {
-        new Feature("fa-solid fa-shield-halved", "Seguridad Garantizada", "Implementamos los más altos estándares de seguridad para proteger tus datos y sistemas críticos con tecnología de punta."),
-        new Feature("fa-solid fa-bolt", "Alto Rendimiento", "Nuestros sistemas están optimizados para ofrecer el máximo rendimiento y eficiencia en todas las operaciones empresariales."),
-        new Feature("fa-solid fa-users", "Equipo Experto", "Contamos con profesionales certificados con más de 10 años de experiencia en implementación de sistemas empresariales."),
-        new Feature("fa-solid fa-award", "Calidad Certificada", "Todos nuestros productos y servicios cumplen con certificaciones internacionales ISO y estándares de calidad mundial."),
-        new Feature("fa-solid fa-clock", "Soporte 24/7", "Ofrecemos soporte técnico especializado las 24 horas del día, los 7 días de la semana para garantizar la continuidad de tu negocio."),
-        new Feature("fa-solid fa-headphones", "Atención Personalizada", "Cada cliente recibe un plan personalizado adaptado a sus necesidades específicas y objetivos empresariales únicos.")
+        new Feature("fa-solid fa-shield-halved", "Seguridad Garantizada", "Implementamos los más altos estándares de seguridad para proteger tus datos y sistemas críticos con tecnología de punta.", "fade-left", 100),
+        new Feature("fa-solid fa-bolt", "Alto Rendimiento", "Nuestros sistemas están optimizados para ofrecer el máximo rendimiento y eficiencia en todas las operaciones empresariales.", "fade-up", 100),
+        new Feature("fa-solid fa-users", "Equipo Experto", "Contamos con profesionales certificados con más de 10 años de experiencia en implementación de sistemas empresariales.", "fade-right", 100),
+        new Feature("fa-solid fa-award", "Calidad Certificada", "Todos nuestros productos y servicios cumplen con certificaciones internacionales ISO y estándares de calidad mundial.", "fade-left", 100),
+        new Feature("fa-solid fa-clock", "Soporte 24/7", "Ofrecemos soporte técnico especializado las 24 horas del día, los 7 días de la semana para garantizar la continuidad de tu negocio.", "fade-up", 100),
+        new Feature("fa-solid fa-headphones", "Atención Personalizada", "Cada cliente recibe un plan personalizado adaptado a sus necesidades específicas y objetivos empresariales únicos.", "fade-right", 100)
     };
 
     private List<Stat> Stats = new()
     {
-        new Stat(1000, "+", "Empresas Atendidas"),
-        new Stat(24, "/7", "Soporte Técnico"),
-        new Stat(30, "+", "Años de Experiencia")
+        new Stat(1000, "+", "Empresas Atendidas", "fade-up", 100),
+        new Stat(24, "/7", "Soporte Técnico", "fade-up", 200),
+        new Stat(30, "+", "Años de Experiencia", "fade-up", 300)
     };
 
-    private record Feature(string Icon, string Title, string Description);
-    private record Stat(int TargetNumber, string Suffix, string Label);
+
 }

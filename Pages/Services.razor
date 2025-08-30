@@ -4,7 +4,7 @@
     <div class="services-container">
         <div class="services-header">
             <h2>Nuestros servicios</h2>
-            <div class="divider"></div>
+            <div class="divider" data-aos="fade-up" data-aos-duration="1000"></div>
             <p>
                 Ofrecemos soluciones tecnológicas integrales diseñadas para impulsar el crecimiento
                 y la eficiencia de tu empresa.
@@ -29,7 +29,7 @@
                             <li><span class="dot"></span>@feature</li>
                         }
                     </ul>
-                    <button onclick="scrollToSection('contactanos')" class="service-btn">Solicitar Cotización</button>
+                    <button onclick="scrollToSection('contactanos')" class="service-btn" data-aos="fade-up" data-aos-duration="1000">Solicitar Cotización</button>
                 </div>
             }
         </div>
@@ -43,7 +43,7 @@
         <div class="additional-services">
             @foreach (var service in AdditionalServices)
             {
-                <div class="aditional-services small">
+                <div class="aditional-services small" data-aos="@service.AosAnimation" data-aos-delay="@service.AosDelay">
                     @* <div class="icon-wrapper small">
                         <i class="@service.IconClass"></i>
                     </div> *@
@@ -62,6 +62,8 @@
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public List<string> Features { get; set; } = new();
+        public string AosAnimation { get; set; } = string.Empty;
+        public int AosDelay { get; set; } = 0;
     }
 
     private List<Service> MainServices = new()
@@ -77,7 +79,7 @@
                 "Sistemas de inventario",
                 "Gestión de recursos humanos",
                 "Contabilidad integrada"
-            }
+            },
         },
         new Service {
             IconClass = "fas fa-globe",
@@ -95,11 +97,11 @@
 
     private List<Service> AdditionalServices = new()
     {
-        new Service { IconClass = "fas fa-cogs", Title = "Automatización de Procesos", Description = "Optimizamos y automatizamos procesos empresariales para mayor eficiencia." },
-        new Service { IconClass = "fas fa-chart-bar", Title = "Business Intelligence", Description = "Dashboards y reportes inteligentes para la toma de decisiones estratégicas." },
-        new Service { IconClass = "fas fa-lightbulb", Title = "Facturación Electrónica", Description = "Implementamos soluciones de facturación electrónica adaptadas a tus necesidades y normativas locales." },
-        new Service { IconClass = "fas fa-mobile-alt", Title = "Aplicaciones Móviles", Description = "Desarrollo de apps móviles nativas y híbridas para iOS y Android." },
-        new Service { IconClass = "fas fa-cloud", Title = "Migración a la Nube", Description = "Trasladamos tus sistemas a la nube para mayor escalabilidad y flexibilidad." },
-        new Service { IconClass = "fas fa-plug", Title = "Integración de Sistemas", Description = "Conectamos distintas plataformas y herramientas para lograr una gestión centralizada y más eficiente." }
+        new Service { IconClass = "fas fa-cogs", Title = "Automatización de Procesos", Description = "Optimizamos y automatizamos procesos empresariales para mayor eficiencia.", AosAnimation = "fade-left", AosDelay = 100 },
+        new Service { IconClass = "fas fa-chart-bar", Title = "Business Intelligence", Description = "Dashboards y reportes inteligentes para la toma de decisiones estratégicas.", AosAnimation = "fade-up", AosDelay = 100 },
+        new Service { IconClass = "fas fa-lightbulb", Title = "Facturación Electrónica", Description = "Implementamos soluciones de facturación electrónica adaptadas a tus necesidades y normativas locales.", AosAnimation = "fade-right", AosDelay = 100 },
+        new Service { IconClass = "fas fa-mobile-alt", Title = "Aplicaciones Móviles", Description = "Desarrollo de apps móviles nativas y híbridas para iOS y Android.", AosAnimation = "fade-left", AosDelay = 100 },
+        new Service { IconClass = "fas fa-cloud", Title = "Migración a la Nube", Description = "Trasladamos tus sistemas a la nube para mayor escalabilidad y flexibilidad.", AosAnimation = "fade-up", AosDelay = 100 },
+        new Service { IconClass = "fas fa-plug", Title = "Integración de Sistemas", Description = "Conectamos distintas plataformas y herramientas para lograr una gestión centralizada y más eficiente.", AosAnimation = "fade-right", AosDelay = 100 }
     };
 }

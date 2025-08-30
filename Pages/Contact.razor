@@ -6,7 +6,7 @@
 <section class="contact-section">
         <div class="contact-header">
             <h2>Contáctanos</h2>
-            <div class="divider"></div>
+        <div class="divider" data-aos="fade-up" data-aos-duration="1000"></div>
             <p>¿Tienes preguntas o necesitas ayuda? Estamos a un mensaje de distancia. ¡Contáctanos hoy mismo!</p>
         </div>
 
@@ -105,7 +105,7 @@
                         <i class="fas fa-comment icon-input"></i>
                         <InputTextArea class="input textarea" @bind-Value="formData.Message" placeholder="Tu mensaje..." Rows="5" required />
                     </div>
-                    <button type="submit" class="submit-button">
+                    <button type="submit" class="submit-button" data-aos="zoom-in" data-aos-duration="1000">
                         <i class="fas fa-paper-plane"></i> <span>Enviar Mensaje</span>
                     </button>
                 </EditForm>
@@ -115,7 +115,7 @@
 
 @code {
     private DRR_PAGE_BLAZOR.Models.Empresa? empresa;
-    [Inject] IJSRuntime JS { get; set; }
+    [Inject] IJSRuntime? JS { get; set; }
     private string numeroWhatsApp = "";
 
     private ContactFormModel formData = new();
@@ -154,10 +154,6 @@
         if (firstRender)
         {
             await JS.InvokeVoidAsync("setupFab");
-        }
-
-        if (firstRender)
-        {
             await JS.InvokeVoidAsync("initLeafletMap");
         }
     }
@@ -174,11 +170,6 @@
             }
             else
             {
-                // await JS.InvokeVoidAsync("console.log", "Empresa cargada:", JsonSerializer.Serialize(empresa, new JsonSerializerOptions
-                // {
-                //     WriteIndented = true
-                // }));
-
                 // Formatear teléfono
                 var telefono = empresa?.telefono ?? "";
 
@@ -191,8 +182,6 @@
 
                 // Prefijo país Argentina: 549
                 numeroWhatsApp = $"549{telefono}";
-
-                // await JS.InvokeVoidAsync("console.log", $"WhatsApp formateado: {numeroWhatsApp}");
             }
         }
         catch (Exception ex)
