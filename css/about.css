@@ -1,0 +1,134 @@
+﻿.about-section .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.about-section {
+    padding: 4rem 0;
+    background-color: transparent;
+    /*    background: linear-gradient(135deg, hsl(240, 3.7%, 15.9%), hsl(240, 10%, 3.9%));*/
+}
+
+.about-header h2 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+}
+
+.divider {
+    width: 96px;
+    height: 4px;
+    margin: 0 auto 1.5rem;
+    background: #f9e905;
+    border-radius: 2px;
+}
+
+.about-header p {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.2rem;
+    color: #4b5563;
+}
+
+.highlight {
+    color: hsl(217, 91%, 60%);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+@media(min-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.about-text h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.about-text p {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.5rem;
+    font-weight: normal;
+}
+
+.about-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media(min-width: 768px) {
+    .about-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.about-card {
+    border: 1px solid hsl(214.3, 31.8%, 91.4%);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px -5px hsl(217, 91%, 60%, 0.2);
+    display: flex;
+    align-items: start;
+    transition: all 0.3s ease-in-out !important;
+    font-family: 'Montserrat', sans-serif;
+}
+
+    .about-card h4 {
+        font-weight: bold;
+        color: #1f2937;
+        margin-top: 0;
+    }
+
+    .about-card p {
+        font-family: 'Montserrat', sans-serif;
+        color: #4b5563;
+        line-height: 1.5rem;
+    }
+
+    .about-card:hover {
+        box-shadow: 0 0 50px hsl(217, 91%, 60%, 0.3);
+    }
+
+.icon-title-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+}
+
+    .icon-title-container .icon-wrapper {
+        width: 48px;
+        height: 48px;
+        border-radius: 0.5rem;
+        transition: transform 0.3s ease;
+        background: linear-gradient(to bottom right, #3b82f6, #393185);
+    }
+
+.about-card:hover .icon-wrapper {
+    transform: scale(1.1);
+}
+
+.icon-wrapper i {
+    color: white;
+/*    font-size: 1.25rem;*/
+}
