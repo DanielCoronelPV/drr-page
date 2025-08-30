@@ -56,7 +56,19 @@
     overflow: hidden;
     border-radius: 0.75rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 300px;
+    height: auto !important;
+}
+
+@media(min-width:615px) {
+    .card {
+        height: 200px !important;
+    }
+}
+
+@media(min-width:1296px) {
+    .card {
+        height: 300px !important;
+    }
 }
 
 .img-wrapper {
